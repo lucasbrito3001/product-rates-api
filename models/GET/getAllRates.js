@@ -1,5 +1,5 @@
 module.exports = async () => {
-    const schemas = require('../databases/database_rates')
+    const schemas = require('../../databases/database_rates')
 
     const rates_notebook = await schemas.notebooks.findAll();
     const rates_smartphone = await schemas.smartphones.findAll();
