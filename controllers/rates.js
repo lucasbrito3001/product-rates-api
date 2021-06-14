@@ -1,9 +1,11 @@
 (async () => {
-    const schemas = require('../databases/database_rates')
-    const get_notebook_rate = require('../models/getNotebook')
-    const get_smartphone_rate = require('../models/getSmartphone')
-    const get_smartv_rate = require('../models/getSmartv')
-    const get_all_rates = require('../models/getAllRates')
+    const get_notebook_rate = require('../models/GET/getNotebook')
+    const get_smartphone_rate = require('../models/GET/getSmartphone')
+    const get_smartv_rate = require('../models/GET/getSmartv')
+    const get_all_rates = require('../models/GET/getAllRates')
+    const post_notebook_rate = require('../models/POST/postNotebook')
+    const post_smartphone_rate = require('../models/POST/postSmartphone')
+    const post_smartv_rate = require('../models/POST/postSmartv')
 
     module.exports = app => {
         app.get('/api/rates', async (req, res) => {
@@ -39,35 +41,20 @@
         })
 
         app.post('/api/rates/notebook', async (req, res) => {
-            await schemas.notebooks.create({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                age: req.body.age,
-                rate: req.body.rate
-            })
-            console.log(req.body)
+            await post_notebook_rate(req)
+
             res.send(req.body)
         })
 
         app.post('/api/rates/smartphone', async (req, res) => {
-            await schemas.smartphones.create({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                age: req.body.age,
-                rate: req.body.rate
-            })
-            console.log(req.body)
+            await post_smartphone_rate(req)
+            
             res.send(req.body)
         })
 
         app.post('/api/rates/smartv', async (req, res) => {
-            await schemas.smartvs.create({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                age: req.body.age,
-                rate: req.body.rate
-            })
-            console.log(req.body)
+            await post_smartv_rate(req)
+
             res.send(req.body)
         })
     }
