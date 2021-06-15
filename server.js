@@ -16,6 +16,9 @@
     // await syncs.notebooks.sync({ force: true })
     // await syncs.smartphones.sync({ force: true })
     // await syncs.smartvs.sync({ force: true })
+    // await syncs.smartwatches.sync({ force: true })
+    // await syncs.keyboards.sync({ force: true })
+    // await syncs.headsets.sync({ force: true })
 
     const port = 3456
 
